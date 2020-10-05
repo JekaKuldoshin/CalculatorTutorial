@@ -2,10 +2,28 @@
 //
 
 #include <iostream>
+#include "Calculator.h"
+using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    double x = 0.0;
+    double y = 0.0;
+    double result = 0.0;
+    char oper = '+';
+
+    cout << "Calculator Console Application" << endl << endl;
+    cout << "Please enter the operation to perfome. Format: a+b | a-b | a*b | a/b"
+        << endl;
+
+    Calculator c;
+    while (true)
+    {
+        cin >> x >> oper >> y;
+        result = c.Calculate(x, oper, y);
+        cout << "Result is: " << result << endl;
+    }
+    return 0;
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
@@ -18,3 +36,23 @@ int main()
 //   4. В окне "Список ошибок" можно просматривать ошибки.
 //   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
 //   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
+
+#include "Calculator.h"
+double Calculator::Calculate(double x, char oper, double y)
+{
+    switch (oper)
+    {
+    case '+':
+        return x + y;
+    case '-':
+        return x - y;
+    case '*':
+        return x * y;
+    case '/':
+        return x / y;
+    default:
+        return 0.0;
+    }
+}
+
+
